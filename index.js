@@ -19,12 +19,13 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
 }
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/uploads", express.static(uploadsDir));
 
 // Set EJS as the templating engine
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views")); // Ensure the correct views directory
 
 // In-memory storage for posts
 const posts = [];
@@ -48,13 +49,13 @@ app.get("/blogpost", (req, res) => {
   res.render("blogpost");
 });
 
-const placeholderImage = 'placeholder.png'; // Ange sökvägen till din platshållarbild
+const placeholderImage = 'placeholder.png'; // Specify the path to your placeholder image
 
 app.post("/blogpost", upload.single("postImage"), (req, res) => {
   const postTitle = req.body.postTitle;
   const postText = req.body.postText;
-  const postImage = req.file ? req.file.filename : placeholderImage; // Använd platshållarbilden om ingen bild laddats upp
-  const createdAt = new Date().toISOString().split('T')[0];  // Spara tidpunkten då inlägget skapades
+  const postImage = req.file ? req.file.filename : placeholderImage; // Use placeholder image if no image is uploaded
+  const createdAt = new Date().toISOString().split('T')[0];  // Save the creation time of the post
   posts.push({ title: postTitle, text: postText, image: postImage, createdAt: createdAt });
   console.log(posts); // Debugging: Log posts to verify data
   res.redirect("/");
@@ -80,7 +81,7 @@ app.post("/editpost/:id", upload.single("postImage"), (req, res) => {
   const updatedTitle = req.body.postTitle;
   const updatedText = req.body.postText;
   const postImage = req.file ? req.file.filename : posts[postId].image || placeholderImage; // Use new image if uploaded, else keep old image
-  const createdAt = posts[postId].createdAt; // Bevara ursprunglig skapandetid
+  const createdAt = posts[postId].createdAt; // Preserve original creation time
 
   // Check if the post exists
   if (!posts[postId]) {
