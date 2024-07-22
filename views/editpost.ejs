@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Blog Post</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="form-body">
+  <div class="form-container">
+    <form action="/editpost/<%= id %>" method="POST" enctype="multipart/form-data">
+      <input name="postTitle" type="text" class="postTitle" value="<%= title %>" required />
+      <div class="file-input-container">
+        <input id="postImage" name="postImage" type="file" class="postImage" accept="image/*" />
+        <label for="postImage" class="file-input-button">CHOOSE IMAGE</label>
+      </div>
+      <div id="file-info" class="file-info">
+        <% if (image) { %>
+          <img src="/uploads/<%= image %>" width="25" height="25" style="margin-right: 10px;" />
+          <span class="file-name"><%= image %></span>
+        <% } %>
+      </div>
+      <textarea name="postText" class="postText" required><%= text %></textarea>
+      <input type="submit" value="SAVE" />
+    </form>
+    <a class="cancel-btn" href="/viewpost/<%= id %>">Cancel</a>
+  </div>
+  <script>
+    document.getElementById('postImage').addEventListener('change', function(event) {
+      const fileInput = event.target;
+      const file = fileInput.files[0];
+      const fileInfo = document.getElementById('file-info');
+      
+      fileInfo.innerHTML = ''; // Clear any previous file info
+      
+      if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.width = 25; // Set the width to 25px
+          img.height = 25; // Set the height to 25px
+
+          const fileName = document.createElement('span');
+          fileName.textContent = file.name;
+          fileName.classList.add('file-name'); // Add the custom class for styling
+
+          fileInfo.appendChild(img);
+          fileInfo.appendChild(fileName);
+        };
+        
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>

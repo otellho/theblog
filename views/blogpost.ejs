@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Blog Post</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="form-body">
+  <div class="form-container">
+    <form action="/blogpost" method="POST" enctype="multipart/form-data">
+      <input name="postTitle" type="text" class="postTitle" placeholder="POST TITLE" required />
+      <div class="file-input-container">
+        <input id="postImage" name="postImage" type="file" class="postImage" accept="image/*" />
+        <label for="postImage" class="file-input-button">CHOOSE IMAGE</label>
+      </div>
+      <div id="file-info" class="file-info"></div> <!-- Add this line -->
+      <textarea name="postText" class="postText" placeholder="POST TEXT" required></textarea>
+      <input type="submit" value="PUBLISH" />
+    </form>
+  </div>
+  <script>
+    document.getElementById('postImage').addEventListener('change', function(event) {
+      const fileInput = event.target;
+      const file = fileInput.files[0];
+      const fileInfo = document.getElementById('file-info');
+      
+      fileInfo.innerHTML = ''; // Clear any previous file info
+      
+      if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.width = 25; // Set the width to 25px
+          img.height = 25; // Set the height to 25px
+          img.style.marginRight = '10px'; // Add some space between image and text
+
+          const fileName = document.createElement('span');
+          fileName.textContent = file.name;
+          fileName.classList.add('file-name'); // Add the custom class for styling
+
+
+          fileInfo.appendChild(img);
+          fileInfo.appendChild(fileName);
+          
+        };
+        
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+.body {
+    background: #E5F4E7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    background: #E5F4E7;
+}
+
+.bg-body-tertiary {
+    background: #E5F4E7 !important;
+}
+
+/* Custom green button */
+.btn.btn-custom-green {
+    background: #99CDA9;
+    color: #F1FDF3;
+    border: none;
+    padding: 1rem 2rem; /* Increase padding for larger button */
+    font-size: 1.7rem; /* Increase font size for larger text */
+    border-radius: 19px; /* Add border-radius for rounder corners */
+    white-space: nowrap; /* Ensure text is on one line */
+}
+
+.btn.btn-custom-green:hover {
+    background-color: #D1E9D2;
+    color: #F1FDF3;
+}
+
+/* Edit/delete buttons */
+.btn-delete, .btn-edit {
+    background: #99CDA9;
+    color: #F1FDF3;
+    border: none;
+    padding: 4px 12px; /* Increase padding for larger button */
+    font-size: 12px; /* Increase font size for larger text */
+    border-radius: 7px; /* Add border-radius for rounder corners */
+    white-space: nowrap; /* Ensure text is on one line */
+    font-family: Arial, sans-serif;
+}
+
+.btn-delete:hover {
+    background-color: #D1E9D2;
+    color: #F1FDF3;
+}
+
+.btn-edit:hover {
+    background-color: #D1E9D2;
+    color: #F1FDF3;
+}
+
+/* Center the main container with space around the button */
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 470px; /* Adjust height to push the button down */
+    margin-bottom: 0px; /* Ensure there is space between the button and the posts */
+}
+
+.album {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-top: 7px; /* Add margin to separate posts from button */
+}
+
+.album .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Gap between cards */
+    min-height: 200px; /* Adjust this value to fit the number of rows you expect */
+}
+
+/* Blogpost form styling */
+.form-body {
+    background: #E5F4E7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 20px; /* Set equal padding for all sides */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input[type="text"], 
+textarea {
+    width: 100%; /* Use full width */
+    padding: 10px; /* Set equal padding for all sides */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: Arial, sans-serif; /* Ensure a consistent font */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+textarea {
+    height: 200px; /* Make the text area larger */
+    resize: none; /* Prevent resizing */
+}
+
+input[type="file"] {
+    display: none; /* Hide the default file input */
+}
+
+.file-input-container {
+    position: relative;
+    width: 100%; /* Make the container full width */
+}
+
+.file-input-button, .cancel-btn {
+    display: block;
+    background-color: #D1E9D2; /* Default background color */
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    text-align: center;
+    width: 100%; /* Make the button full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.file-input-button:hover {
+    background-color: #99CDA9; /* Hover background color */
+}
+
+.cancel-btn:hover {
+    background-color: #E5F4E7; /* Hover background color */
+}
+
+.cancel-btn {
+    margin-top: 3px; /* Add margin to the top to separate from the SAVE button */
+    text-decoration: none !important;
+}
+
+input[type="file"]:focus + .file-input-container::before {
+    outline: 1px solid #99CDA9;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #99CDA9;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: Arial, sans-serif; /* Ensure a consistent font */
+    width: 100%; /* Make the button full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+input[type="submit"]:hover {
+    background-color: #88bca0;
+}
+
+::placeholder {
+    font-family: Arial, sans-serif; /* Ensure a consistent font */
+}
+
+/* Card styling adjustments */
+.card-body .btn-group {
+    gap: 5px; /* Add some spacing between buttons */
+}
+
+/* Ensure cards take up equal space */
+.card-container {
+    flex: 0 0 350px; /* Make the cards 350px wide */
+    max-width: 350px;
+    padding: 15px; /* Add padding around each card */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.card {
+    width: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.bd-placeholder-img {
+    width: 100%;
+    height: 225px;
+    object-fit: cover; /* Ensure the image covers the container */
+    object-position: center; /* Center the image */
+}
+
+/* Remove white space underneath the buttons */
+.card-body .btn-group {
+    gap: 5px; /* Add some spacing between buttons */
+    margin-bottom: 0; /* Remove bottom margin */
+}
+
+.card-body {
+    background-color: #F1FDF3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.card-body .d-flex {
+    margin-top: auto; /* Push buttons to the bottom */
+
+}
+
+.card-title {
+    flex-grow: 1; /* Allow the title to take up remaining space */
+    margin-bottom: 10px; /* Add some space below the title */
+}
+
+
+.file-info {
+    display: flex;
+    align-items: center;
+    margin: 2px 0; /* Add some margin at the top */
+}
+
+.file-info img {
+    margin-right: 10px; /* Add some space between image and text */
+}
+
+.file-name {
+    background: #99CDA9;
+    color: #F1FDF3;
+    border: none;
+    padding: 5px 10px;
+    font-size: 0.875rem;
+    border-radius: 5px;
+    white-space: nowrap; /* Ensure text is on one line */
+    display: inline-block;
+    font-family: Arial, sans-serif; /* Ensure consistent font */
+}
+
+/* Remove underline from buttons */
+.btn-edit {
+    text-decoration: none !important;
+}
+
+
+
+/* VIEW PAGE */
+
+.view-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #E5F4E7; /* Match your background color */
+    margin: 0;
+}
+
+.post-container {
+    text-align: center;
+}
+
+.post-title {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.post-image {
+    max-width: 500px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.post-text {
+    width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 60px; /* Increase space between text and buttons */
+}
+
+.post-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 20px;
+}
+
